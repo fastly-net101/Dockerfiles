@@ -1,10 +1,7 @@
-FROM ubuntu:xenial
+FROM fastlynet101/base
 MAINTAINER dbarroso@fastly.com
 
-WORKDIR /root
-
-RUN apt-get update; apt-get upgrade -y;
-RUN apt-get install -y ucf iproute mtr-tiny traceroute iputils-ping less tcpdump net-tools curl
+LABEL fastly.net101.name=noarp
 
 COPY ./run.sh /bin/run.sh
 
