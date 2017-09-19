@@ -1,0 +1,34 @@
+version: '2.1'
+
+services:
+    host00:
+        hostname: host00
+        build:
+            context: ..
+            dockerfile: Dockerfile
+        image: net101_base_test
+        networks:
+            test_net101_base_image:
+                ipv4_address: 10.255.255.50
+        cap_add:
+            - NET_ADMIN
+    host01:
+        hostname: host01
+        build:
+            context: ..
+            dockerfile: Dockerfile
+        image: net101_base_test
+        networks:
+            test_net101_base_image:
+                ipv4_address: 10.255.255.51
+        cap_add:
+            - NET_ADMIN
+
+networks:
+    test_net101_base_image:
+        enable_ipv6: false
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+                - subnet: 10.255.255.0/24
