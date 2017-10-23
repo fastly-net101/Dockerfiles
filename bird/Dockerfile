@@ -6,6 +6,7 @@ LABEL fastly.net101.name=bird
 WORKDIR /root
 
 RUN apt-get install -y bird
+RUN mkdir /run/bird
 
 COPY ./run.sh /bin/run.sh
 
