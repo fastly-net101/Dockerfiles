@@ -1,0 +1,10 @@
+#!/bin/bash
+previous=0
+inotifywait -m -e modify bird.conf 2> /dev/null |
+    while read path _ file; do
+        current=$(date +'%H%M%S')
+        if [ $current -gt $previous ] ; then
+            pkill -1 -x bird
+            previous=$current
+        fi
+    done
