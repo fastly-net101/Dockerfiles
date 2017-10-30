@@ -12,6 +12,7 @@ RUN mkdir /run/bird
 
 COPY ./run.sh /bin/run.sh
 COPY ./birdwatcher /bin/birdwatcher
+COPY ./renameinterface /bin/renameinterface
 COPY ./webserver /bin/webserver
 
 ENTRYPOINT ["/bin/run.sh"]
