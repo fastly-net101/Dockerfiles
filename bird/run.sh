@@ -1,4 +1,5 @@
 #!/bin/bash
+renameinterface
 source /root/config
 birdwatcher &
 webserver &
