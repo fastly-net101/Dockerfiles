@@ -12,7 +12,7 @@ function rename {
         ip link set $old name $new
         ip link set $new up
         while read -r line; do
-            ip route add $line
+            ip route add $line 2&> /dev/null
         done <<< "$ROUTES"
     fi
 }
