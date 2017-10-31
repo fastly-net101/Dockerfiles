@@ -7,9 +7,13 @@ function rename {
     local old=$1
     local new=$2
     if [[ $old != $new ]]; then 
+        ROUTES=$(ip route show scope global dev $old)
         ip link set $old down
         ip link set $old name $new
         ip link set $new up
+        while read -r line; do
+            ip route add $line
+        done <<< "$ROUTES"
     fi
 }
 
